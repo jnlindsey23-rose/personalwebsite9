@@ -1,0 +1,666 @@
+/* 
+   SIMPLIFIED FORTY TEMPLATE STYLESHEET
+   
+   KEY CUSTOMIZATION POINTS:
+   1. COLORS: Lines 15-20 - Change the main color scheme
+   2. FONTS: Line 25 - Change the font family
+   3. BANNER IMAGE: Line 250 - Change banner background image
+   4. TILE COLORS: Lines 400-420 - Change portfolio tile overlay colors
+*/
+
+/* ========================================
+   VARIABLES - CHANGE THESE FOR EASY CUSTOMIZATION
+   ======================================== */
+
+:root {
+    --primary-color: #9bf1ff;
+    --primary-dark: #53e3fb;
+    --background-dark: #242943;
+    --background-light: #2a2f4a;
+    --text-color: #ffffff;
+    --border-color: rgba(212, 212, 255, 0.1);
+}
+
+/* ========================================
+   BASIC RESET & TYPOGRAPHY
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Source Sans Pro", Arial, sans-serif;
+    font-size: 17pt;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--text-color);
+    background: var(--background-dark);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.65;
+    margin: 0 0 1em 0;
+    color: var(--text-color);
+}
+
+h1 { font-size: 2.5em; }
+h2 { font-size: 1.75em; }
+h3 { font-size: 1.35em; }
+
+p {
+    margin: 0 0 2em 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: dotted 1px;
+    transition: color 0.2s ease, border-bottom-color 0.2s ease;
+}
+
+a:hover {
+    border-bottom-color: transparent;
+    color: var(--primary-color);
+}
+
+strong, b {
+    font-weight: 600;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background-light);
+    box-shadow: 0 0 0.25em 0 rgba(0, 0, 0, 0.15);
+    height: 3.25em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+}
+
+#header .logo {
+    font-size: 0.8em;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 0 1.5em;
+    border: 0;
+}
+
+#header .logo strong {
+    background-color: var(--text-color);
+    color: var(--background-dark);
+    display: inline-block;
+    line-height: 1.65em;
+    padding: 0 0.125em 0 0.375em;
+    margin-right: 0.325em;
+    transition: background-color 0.2s ease;
+}
+
+#header .logo:hover strong {
+    background-color: var(--primary-color);
+}
+
+#header nav .menu-toggle {
+    display: block;
+    font-size: 0.8em;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 0 1.5em;
+    border: 0;
+}
+
+/* ========================================
+   MENU (Mobile/Overlay)
+   ======================================== */
+
+#menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(36, 41, 67, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10002;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s;
+}
+
+#menu.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#menu .inner {
+    text-align: center;
+    max-width: 18em;
+}
+
+#menu .links {
+    list-style: none;
+    margin: 0 0 1em 0;
+}
+
+#menu .links li {
+    border-top: solid 1px var(--border-color);
+}
+
+#menu .links li:first-child {
+    border-top: 0;
+}
+
+#menu .links a {
+    display: block;
+    font-size: 0.8em;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    line-height: 4em;
+    border: 0;
+}
+
+#menu .close {
+    display: inline-block;
+    margin-top: 2em;
+    padding: 0.5em 1em;
+    border: solid 2px var(--text-color);
+    font-size: 0.8em;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+}
+
+#menu .close:hover {
+    border-color: var(--primary-color);
+}
+
+/* ========================================
+   BANNER
+   CHANGE BANNER IMAGE: Update background-image URL on line ~250
+   ======================================== */
+
+#banner {
+    display: flex;
+    align-items: center;
+    min-height: 60vh;
+    max-height: 32em;
+    padding: 6em 0 2em 0;
+    background-image: url('images/banner.jpg'); /* CHANGE THIS IMAGE */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    margin-top: 3.25em;
+}
+
+#banner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-dark);
+    opacity: 0.85;
+    z-index: 1;
+}
+
+#banner .inner {
+    position: relative;
+    z-index: 2;
+    max-width: 65em;
+    margin: 0 auto;
+    padding: 0 3em;
+}
+
+#banner h1 {
+    font-size: 3.25em;
+    margin-bottom: 0.5em;
+}
+
+#banner .content {
+    display: flex;
+    align-items: center;
+    margin: 0 0 2em 0;
+}
+
+#banner .content p {
+    font-size: 0.7em;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-right: 1.5em;
+    margin-bottom: 0;
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+
+.button {
+    display: inline-block;
+    background-color: transparent;
+    border: solid 2px var(--text-color);
+    color: var(--text-color);
+    font-size: 0.8em;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 0 1.75em;
+    line-height: 3.5em;
+    height: 3.5em;
+    text-align: center;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    border-bottom: 0;
+}
+
+.button:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.button.primary {
+    background-color: var(--text-color);
+    border-color: var(--text-color);
+    color: var(--background-dark);
+}
+
+.button.primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.actions {
+    list-style: none;
+    display: flex;
+    gap: 1em;
+}
+
+/* ========================================
+   MAIN CONTENT
+   ======================================== */
+
+#main {
+    background-color: var(--background-light);
+}
+
+#main > section {
+    border-top: solid 1px var(--border-color);
+}
+
+#main > section:first-child {
+    border-top: 0;
+}
+
+#main .inner {
+    max-width: 65em;
+    margin: 0 auto;
+    padding: 4em 3em 2em 3em;
+}
+
+.major::after {
+    content: '';
+    background-color: var(--text-color);
+    display: block;
+    height: 2px;
+    margin: 0.325em 0 0.5em 0;
+    width: 100%;
+}
+
+/* ========================================
+   PORTFOLIO TILES
+   CHANGE TILE COLORS: Update background-color values below (lines ~400-420)
+   ======================================== */
+
+.tiles {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tiles article {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 40%;
+    height: 40vh;
+    min-height: 23em;
+    max-height: 40em;
+    padding: 4em;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
+.tiles article:hover {
+    transform: scale(1.05);
+}
+
+.tiles article:nth-child(2n - 1),
+.tiles article:nth-child(2n - 2) {
+    width: 60%;
+}
+
+.tiles article .image {
+    display: none;
+}
+
+.tiles article header {
+    position: relative;
+    z-index: 3;
+}
+
+.tiles article::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.85;
+    z-index: 2;
+    transition: opacity 0.5s ease;
+}
+
+.tiles article:hover::before {
+    opacity: 0.5;
+}
+
+.tiles article::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(36, 41, 67, 0.25);
+    z-index: 1;
+}
+
+/* TILE OVERLAY COLORS - CUSTOMIZE THESE */
+.tiles article.tile-1::before { background-color: #6fc3df; }
+.tiles article.tile-2::before { background-color: #8d82c4; }
+.tiles article.tile-3::before { background-color: #ec8d81; }
+.tiles article.tile-4::before { background-color: #e7b788; }
+.tiles article.tile-5::before { background-color: #8ea9e8; }
+.tiles article.tile-6::before { background-color: #87c5a4; }
+
+.tiles article .link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+}
+
+/* ========================================
+   CONTACT SECTION
+   ======================================== */
+
+#contact {
+    border-bottom: solid 1px var(--border-color);
+}
+
+#contact > .inner {
+    display: flex;
+    max-width: 65em;
+    margin: 0 auto;
+    padding: 0;
+}
+
+#contact > .inner > section:first-child {
+    width: 60%;
+    padding: 4em 3em 2em 0;
+    border-right: solid 1px var(--border-color);
+}
+
+#contact > .inner > .split {
+    width: 40%;
+    padding: 0 0 0 3em;
+}
+
+#contact .split section {
+    padding: 3em 0 1em 0;
+    border-top: solid 1px var(--border-color);
+}
+
+#contact .split section:first-child {
+    border-top: 0;
+}
+
+.contact-method {
+    padding-left: 3.25em;
+    position: relative;
+}
+
+.contact-method .icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.5em;
+}
+
+.contact-method h3 {
+    margin: 0 0 0.5em 0;
+}
+
+/* ========================================
+   FORMS
+   ======================================== */
+
+form .fields {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -1.5em 0 2em -1.5em;
+}
+
+form .field {
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding: 1.5em 0 0 1.5em;
+    width: calc(100% - 1.5em);
+}
+
+form .field.half {
+    width: calc(50% - 0.75em);
+}
+
+label {
+    display: block;
+    font-size: 0.8em;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin: 0 0 1em 0;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    appearance: none;
+    background: rgba(212, 212, 255, 0.035);
+    border: none;
+    border-radius: 0;
+    color: inherit;
+    display: block;
+    outline: 0;
+    padding: 0 1em;
+    width: 100%;
+    font-family: inherit;
+}
+
+input[type="text"],
+input[type="email"] {
+    height: 2.75em;
+}
+
+textarea {
+    padding: 0.75em 1em;
+    min-height: 10em;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border: solid 2px var(--primary-color);
+}
+
+input[type="submit"],
+input[type="reset"] {
+    appearance: none;
+    cursor: pointer;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+#footer {
+    padding: 2em 0;
+}
+
+#footer .inner {
+    max-width: 65em;
+    margin: 0 auto;
+    padding: 0 3em;
+}
+
+.copyright {
+    list-style: none;
+    display: flex;
+    font-size: 0.8em;
+    color: rgba(244, 244, 255, 0.2);
+}
+
+.copyright li {
+    border-left: solid 1px var(--border-color);
+    margin-left: 1em;
+    padding-left: 1em;
+}
+
+.copyright li:first-child {
+    border-left: 0;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media screen and (max-width: 980px) {
+    body {
+        font-size: 14pt;
+    }
+    
+    #banner .inner {
+        padding: 0 2em;
+    }
+    
+    #main .inner {
+        padding: 3em 2em 1em 2em;
+    }
+    
+    .tiles article {
+        width: 50% !important;
+        padding: 3em 2em;
+    }
+    
+    #contact > .inner {
+        flex-direction: column;
+    }
+    
+    #contact > .inner > section:first-child {
+        width: 100%;
+        padding: 4em 2em 2em 2em;
+        border-right: 0;
+    }
+    
+    #contact > .inner > .split {
+        width: 100%;
+        padding: 0 2em;
+    }
+}
+
+@media screen and (max-width: 736px) {
+    body {
+        font-size: 12pt;
+    }
+    
+    h1 { font-size: 2em; }
+    h2 { font-size: 1.5em; }
+    
+    #header {
+        height: 2.75em;
+    }
+    
+    #banner {
+        padding: 5em 0 1em 0;
+        margin-top: 2.75em;
+        min-height: auto;
+    }
+    
+    #banner h1 {
+        font-size: 2em;
+    }
+    
+    #banner .content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    #banner .content p {
+        margin-right: 0;
+        margin-bottom: 2em;
+    }
+    
+    .tiles article {
+        width: 100% !important;
+        height: 20em;
+        padding: 3em 1.5em 1em 1.5em;
+    }
+    
+    form .field.half {
+        width: calc(100% - 1.5em);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #menu .inner {
+        padding: 2em;
+    }
+    
+    .actions {
+        flex-direction: column;
+    }
+    
+    .copyright {
+        flex-direction: column;
+    }
+    
+    .copyright li {
+        border-left: 0;
+        margin-left: 0;
+        padding-left: 0;
+        line-height: 2em;
+    }
+}
