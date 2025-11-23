@@ -325,13 +325,31 @@ strong, b {
     padding: 4em 3em 2em 3em;
 }
 
-.major::after {
+.major {
+    width: max-content;
+    margin-bottom: 2em;
+}
+
+.major > :first-child {
+    margin-bottom: 0;
+    width: calc(100% + 0.5em);
+}
+
+.major > :first-child::after {
     content: '';
     background-color: var(--text-color);
     display: block;
     height: 2px;
     margin: 0.325em 0 0.5em 0;
     width: 100%;
+}
+
+.major > p {
+    font-size: 0.7em;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    margin-bottom: 0;
+    text-transform: uppercase;
 }
 
 /* ========================================
@@ -619,6 +637,7 @@ input[type="reset"] {
     
     h1 { font-size: 2em; }
     h2 { font-size: 1.5em; }
+    h3 { font-size: 1.25em; }
     
     #header {
         height: 2.75em;
@@ -646,8 +665,30 @@ input[type="reset"] {
     
     .tiles article {
         width: 100% !important;
-        height: 20em;
+        height: 16em;
+        max-height: none;
+        min-height: 0;
         padding: 3em 1.5em 1em 1.5em;
+    }
+    
+    .tiles article h3 {
+        font-size: 1.5em;
+    }
+    
+    #main .inner {
+        padding: 3em 1.5em 1em 1.5em;
+    }
+    
+    #contact > .inner > section:first-child {
+        padding: 3em 1.5em 1em 1.5em;
+    }
+    
+    #contact > .inner > .split {
+        padding: 0 1.5em;
+    }
+    
+    #contact .split section {
+        padding: 3em 0 1em 0;
     }
     
     form .field.half {
@@ -662,6 +703,15 @@ input[type="reset"] {
     
     .actions {
         flex-direction: column;
+    }
+    
+    .tiles {
+        display: block;
+    }
+    
+    .tiles article {
+        height: 20em;
+        width: 100% !important;
     }
     
     .copyright {
